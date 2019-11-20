@@ -1,18 +1,25 @@
-const myform = document.getElementById('myForm');
+const myForm = document.getElementById('myForm');
 
-myform.addEventListener('submit', function (e) {
+  myForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const formData = new FormData(this);
+  let formData = {
+    'User name': document.getElementById("Name").value,
+    "User last name": document.getElementById("LastName").value,
+    "E Mail": document.getElementById("Email").value,
+    "User phone": document.getElementById("Phone").value
+  };
 
-  fetch('/submit', {
-    method: 'post',
-    body: formData
+    fetch('/submit', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'post',
+      body: JSON.stringify(formData)
   }).then(function(response) {
     return response.text();
   }).then(function (text) {
     console.log(text);
   }).catch(function (error) {
-    console.error(error);
-  })
-});
+      console.error(error);
+  })});
