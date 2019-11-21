@@ -6,7 +6,7 @@ const index = express();
 
 const token = '1020374199:AAEoOgadAvtPE4BIIFbIi1aM6wFonrRhpYk';
 const bot = new TelegramBot(token);
-const chatId = -352778269;
+const chatId = -383644200;
 
 
   index.listen (3001, '127.0.0.1');
@@ -20,7 +20,7 @@ index.use(express.urlencoded({ extended: true }));
 
 index.post('/submit', (req, res) => {
   console.log('req.body', req.body);
-  bot.sendMessage(chatId, `Імя: ${req.body[0]}\nФамілія: ${req.body[2]}\nТелефон: ${req.body[3]}\nE-mail:${req.body[2]}`);
+  bot.sendMessage(chatId, `Імя: ${req.body['User name']}\nФамілія: ${req.body['User last name']}\nТелефон: ${req.body['User phone']}\nE-mail:${req.body['E Mail']}`);
   res.end()
   });
 
