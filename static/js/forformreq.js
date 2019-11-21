@@ -1,6 +1,6 @@
 const myForm = document.getElementById('myForm');
 
-  myForm.addEventListener('submit', function (e) {
+  myForm.addEventListener('submit',function (e) {
   e.preventDefault();
 
   let formData = {
@@ -9,8 +9,8 @@ const myForm = document.getElementById('myForm');
     "E Mail": document.getElementById("Email").value,
     "User phone": document.getElementById("Phone").value
   };
-
-    fetch('/submit', {
+    document.forms["myForm"].reset();
+    fetch ('/submit', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -22,4 +22,6 @@ const myForm = document.getElementById('myForm');
     console.log(text);
   }).catch(function (error) {
       console.error(error);
+
   })});
+

@@ -6,7 +6,7 @@ const index = express();
 
 const token = '1020374199:AAEoOgadAvtPE4BIIFbIi1aM6wFonrRhpYk';
 const bot = new TelegramBot(token);
-const chatId = -383644200;
+const chatId = -352778269;
 
 
   index.listen (3001, '127.0.0.1');
@@ -14,14 +14,12 @@ const chatId = -383644200;
   index.get('/', function(req, res){
   res.sendfile(__dirname + '/static/index.html');
   });
-index.use(bodyParser.urlencoded({ extended: true }));
-index.use(bodyParser.json());
-index.use(express.urlencoded({ extended: true }));
 
-index.post('/submit', (req, res) => {
-  console.log('req.body', req.body);
+  index.use(bodyParser.json());
+
+  index.post('/submit', (req, res) => {
+    res.send("Great we made it");
   bot.sendMessage(chatId, `Імя: ${req.body['User name']}\nФамілія: ${req.body['User last name']}\nТелефон: ${req.body['User phone']}\nE-mail:${req.body['E Mail']}`);
-  res.end()
   });
 
 
