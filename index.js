@@ -11,7 +11,7 @@ const chatId = -383644200;
 
   index.listen (3001, '127.0.0.1');
   index.use(express.static(__dirname + '/static'));
-  index.get('*', function(req, res){
+  index.get('/', function(req, res){
   res.sendfile(__dirname + '/static/index.html');
   });
 index.use(bodyParser.urlencoded({ extended: true }));
